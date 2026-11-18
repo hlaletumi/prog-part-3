@@ -1,8 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
- */
 package com.mycompany.part1.st10513583;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -19,11 +16,11 @@ public class LoginTester {
         login.setLastName("Ramafalo");
     }
 
-    // Username correctly formatted
+    // Username correctly formatted (underscore, max 5 characters)
     @Test
     public void testUsernameCorrectlyFormatted() {
-        login.registerUser("boitu_1", "boitu&&sec@An12!", "+27810867109");
-        assertTrue(login.checkUserName("boitu_1"));
+        login.registerUser("boi_1", "boitu&&sec@An12!", "+27810867109");
+        assertTrue(login.checkUserName("boi_1"));
     }
 
     // Username incorrectly formatted
@@ -62,18 +59,18 @@ public class LoginTester {
         Login user = new Login();
         user.setFirstName("Bohlale");
         user.setLastName("Ramafalo");
-        user.registerUser("boitu_12", "boitu&&sec@An12!", "+27810867109");
-        assertTrue(user.loginUser("kyl_1", "boitu&&sec@An12!"));
+        user.registerUser("boi_1", "boitu&&sec@An12!", "+27810867109");
+        assertTrue(user.loginUser("boi_1", "boitu&&sec@An12!"));
     }
 
     // Login failed
     @Test
     public void testLoginFailed() {
         Login user = new Login();
-        user.setFirstName("Bohlae");
+        user.setFirstName("Bohlale");
         user.setLastName("Ramafalo");
-        user.registerUser("boitu_12", "boitu&&sec@An12!", "+27810867109");
-        assertFalse(user.loginUser("kyl_1", "wrongPassword1!"));
+        user.registerUser("boi_1", "boitu&&sec@An12!", "+27810867109");
+        assertFalse(user.loginUser("boi_1", "wrongPassword1!"));
     }
 
     // Returns correct welcome message on successful login
@@ -82,8 +79,8 @@ public class LoginTester {
         Login user = new Login();
         user.setFirstName("Bohlale");
         user.setLastName("Ramafalo");
-        user.registerUser("boitu_1", "boitu&&sec@An12!", "+27810867109");
-        String message = user.returnLoginStatus("boitu_1", "boitu&&sec@An12!");
+        user.registerUser("boi_1", "boitu&&sec@An12!", "+27810867109");
+        String message = user.returnLoginStatus("boi_1", "boitu&&sec@An12!");
         assertEquals("Welcome Bohlale, Ramafalo it is great to see you again.", message);
     }
 
@@ -91,10 +88,10 @@ public class LoginTester {
     @Test
     public void testReturnLoginStatusMessageFailure() {
         Login user = new Login();
-        user.setFirstName("Bohlae");
+        user.setFirstName("Bohlale");
         user.setLastName("Ramafalo");
-        user.registerUser("boitu_1", "boitu&&sec@An12!", "+27810867109");
-        String message = user.returnLoginStatus("boitu_1", "wrong");
+        user.registerUser("boi_1", "boitu&&sec@An12!", "+27810867109");
+        String message = user.returnLoginStatus("boi_1", "wrong");
         assertEquals("Username or password incorrect, please try again.", message);
     }
 }
